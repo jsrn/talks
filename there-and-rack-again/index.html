@@ -28,14 +28,14 @@
           <h1>Objectives</h1>
 
 					<ol>
-						<li>Understand the route an HTTP request takes to a modern Ruby web application.</li>
-						<li>Understand the role that Rack plays in this.</li>
-						<li>Be able to turn Rack to your own uses.</li>
+						<li>Understand how HTTP requests get to your app.</li>
+						<li>Understand the role that rack plays.</li>
+						<li>Make your own rack application.</li>
 					</ol>
 				</section>
 
 				<section data-auto-animate>
-					<h2 data-id="code-title">HTTP</h2>
+					<h2 data-id="code-title">Requests and Responses</h2>
 
 					<pre data-id="code-animation"><code class="http" data-trim data-line-numbers>
 						GET / HTTP/1.1
@@ -60,6 +60,8 @@
 				</section>
 
 				<section>
+					<h2>The Path</h2>
+
 					<pre>
                  ___________________  ___________________________
 _______________  |                 |  |                         |
@@ -187,10 +189,6 @@ _______________  |                 |  |                         |
 				</section>
 
 				<section>
-					<h2>Using Rack yourself</h2>
-				</section>
-
-				<section>
 					<h2>The Littlest Rack Application</h2>
 
 					<pre data-id="code-animation"><code class="ruby" data-trim>
@@ -234,7 +232,49 @@ _______________  |                 |  |                         |
 				<section>
 					<h2>Middleware</h2>
 
-					<p>So tired.</p>
+					<p>Add behaviour without changing your application.</p>
+
+					<p>Essentially also a rack application.</p>
+
+					<img src="img/dolls.jpg" alt="">
+				</section>
+
+				<section>
+					<h2>What's Middleware Good For?</h2>
+
+					<ul>
+						<li>Logging</li>
+						<li>Setting headers</li>
+						<li>Adding compression</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Let's Make Rails</h2>
+
+					<ul>
+						<li>78,913 commits</li>
+						<li>huge contributor community</li>
+						<li>corporate backing</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Let's not.</h2>
+				</section>
+
+				<section>
+					<h2>Let's replicate a small subset of Rails-like features</h2>
+				</section>
+
+				<section>
+					<h2>To Do</h2>
+
+					<ol>
+						<li>Routing</li>
+						<li>Controllers</li>
+						<li>Views</li>
+					</ol>
 				</section>
 			</div>
 		</div>
