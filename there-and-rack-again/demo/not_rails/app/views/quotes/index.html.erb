@@ -1,5 +1,7 @@
 <% quotes.each do |quote| %>
   <blockquote>
-    <%= quote %>
+    <%= quote['text'] %>
+    <br>
+    - <%= quote['author'] %>
   </blockquote>
 <% end %>

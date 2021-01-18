@@ -1,4 +1,5 @@
 require 'erubis'
+require_relative '../models/quote'
 
 class QuotesController
   def initialize(_env); end
@@ -11,6 +12,6 @@ class QuotesController
   end
 
   def index
-    render :index, quotes: ['I like ham', 'You like ham']
+    render :index, quotes: Quote.all
   end
 end
