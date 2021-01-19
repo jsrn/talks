@@ -19,8 +19,7 @@
 				<section>
 					<h1>[draft] There and Rack Again</h1>
 					<h2>What is Rack and Why</h2>
-					<span>James Nutt</span>
-					<br>
+
 					<span>🐦 @jsrndoftime 💌 jsrn@hey.com 🌐 jsrn.net</span>
 				</section>
 
@@ -35,12 +34,37 @@
 				</section>
 
 				<section data-auto-animate>
-					<h2 data-id="code-title">Requests and Responses</h2>
+					<h2 data-id="code-title">HTTP Requests</h2>
 
 					<pre data-id="code-animation"><code class="http" data-trim data-line-numbers>
 						GET / HTTP/1.1
 						Host: www.example.com
 					</code></pre>
+
+					<table>
+						<tbody>
+							<tr>
+								<td>GET</td>
+								<td>The HTTP verb. Commonly GET, POST, PATCH or DELETE.</td>
+							</tr>
+							<tr>
+								<td>/</td>
+								<td>The resource being requested.</td>
+							</tr>
+							<tr>
+								<td>HTTP/1.1</td>
+								<td>The version of HTTP to be used.</td>
+							</tr>
+							<tr>
+								<td>Host:</td>
+								<td>One of potentially several headers passed along with the request.</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>HTTP Responses</h2>
 
 					<pre data-id="code-animation"><code class="http" data-trim data-line-numbers>
 						HTTP/1.1 200 OK
@@ -62,12 +86,14 @@
 				<section>
 					<h2>The Path</h2>
 
+					<p>How does the request reach our Ruby application?</p>
+
 					<pre>
-                 ___________________  ___________________________
-_______________  |                 |  |                         |
-|             |  |    webserver    |  |        app server       |
-|  "the web"  |->|  (nginx, etc.)  |->|  (puma, unicorn, etc.)  |
-|_____________|  |_________________|  |_________________________|
+                 _____________________  _____________________
+_______________  |                   |  |                   |
+|             |  |     webserver     |  |    app server     |
+|  "the web"  |->|  (nginx, apache)  |->|  (puma, unicorn)  |
+|_____________|  |___________________|  |___________________|
 					</pre>
 				</section>
 
@@ -76,23 +102,25 @@ _______________  |                 |  |                         |
 
 					<pre data-id="code-animation"><code class="ruby" data-trim data-line-numbers>
 						require 'socket'
-						server = TCPServer.new 5678
+						server = TCPServer.new(5678) # Bind to a socket
 
-						while session = server.accept
-						  request = session.gets
+						while session = server.accept # Take the next connection
+						  request = session.gets # Read the request
 
-						  session.print "HTTP/1.1 200\r\n"
+						  session.print "HTTP/1.1 200\r\n" # Respond
 						  session.print "Content-Type: text/html\r\n"
 						  session.print "\r\n"
 						  session.print "Hello world!"
 
-						  session.close
+						  session.close # Close the connection
 						end
 					</code></pre>
 				</section>
 
 				<section>
 					<h2>Ruby Application Servers</h2>
+
+					<p>What application servers are there?</p>
 
 					<span class="fragment">unicorn</span><!--
 					--><span class="fragment">, puma</span><!--
@@ -110,6 +138,8 @@ _______________  |                 |  |                         |
 					<p>Your application server is going to want to pass requests to your application.</p>
 
 					<p>Do they speak the same language?</p>
+
+					<p>Who defines that language?</p>
 				</section>
 
 				<section>
@@ -127,7 +157,13 @@ _______________  |                 |  |                         |
 				</section>
 
 				<section>
-					<blockquote cite="https://github.com/rack/rack/blob/master/SPEC.rdoc">A Rack application is a Ruby object (not a class) that responds to call. It takes exactly one argument, the environment and returns an Array of exactly three values: The status, the headers, and the body.</blockquote>
+					<h2>What is a Rack application?</h2>
+
+					<ul>
+						<li>A Ruby object that responds to <code>#call(env)</code></li>
+						<li>Accepts the Rack environment as the only argument.</li>
+						<li>Returns <code>[status_code, headers, body]</code>.</li>
+					</ul>
 				</section>
 
 				<section>
@@ -156,7 +192,7 @@ _______________  |                 |  |                         |
 				</section>
 
 				<section>
-					<h2>Who Uses Rack?</h2>
+					<h2>Which application servers support Rack?</h2>
 
 					<table>
 						<thead>
@@ -214,7 +250,13 @@ _______________  |                 |  |                         |
 				<section>
 					<h2>rackup</h2>
 
-					<blockquote>rackup is a useful tool for running Rack applications</blockquote>
+					<p>rackup is a useful tool for running Rack applications</p>
+
+					<pre data-id="code-animation"><code class="bash" data-trim>
+						# Automatically looks for config.ru
+						# and runs the application on port 3001
+						rackup -p 3001
+          </code></pre>
 				</section>
 
 				<section>
@@ -280,6 +322,10 @@ _______________  |                 |  |                         |
 				</section>
 
 				<section>
+					<p>&lt;insert incredible live coding sequence&gt;</p>
+				</section>
+
+				<section>
 					<h2>Summary</h2>
 
 					<p>We just made a very (very) lightweight MVC framework.</p>
@@ -293,6 +339,8 @@ _______________  |                 |  |                         |
 
 				<section>
 					<h2>Thanks</h2>
+
+					<p>The top 100 Rack contributors as of 19<sup>th</sup> January 2021.</p>
 
 					<p><small>leahneukirchen, raggi, tenderlove, scytrin, josh, jeremyevans, ioquatix, rkh, spastorino, manveru, rtomayko, jeremy, deepj, josevalim, qerub, brainopia, oscardelben, rafaelfranca, postmodern, eileencodes, FooBarWidget, thomasklemm, yhirano55, zenspider, olleolleolle, changemewtf, krzysiek1507, jodosha, styd, kamipo, rinaldifonseca, lukaso, mtodd, tgxworld, sigmavirus24, vipulnsward, thedarkone, radar, jkowens, janko, matthewd, vais, schneems, sophiedeziel, thinkerbot, byroot, dkubb, fatkodima, SamSaffron, ender672, tonytonyjan, bestie, Drenmi, dblock, Jamie0, andrykonchin, alup, osamtimizer, lenny, felixbuenemann, evanphx, KitaitiMakoto, carlzulauf, technomancy, yeban, lanzhiheng, VBart, gjtorikian, alindeman, urielka, dayflower, eregon, davydovanton, martoche, candlerb, itnsk, esparta, AlexKVal, p8, NikolayRys, Sean0628, AlexWayfer, NickLaMuro, ChrisBr, igas, tomelm, tompng, CJKinni, ohler55, bdewater, da2x, okuramasafumi, kirs, prathamesh-sonpatki, greysteil, hyun-park, zzak, alecclarke, ziggythehamster, pvande, and many more</small></p>
 				</section>
