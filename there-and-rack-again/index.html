@@ -89,11 +89,18 @@
 					<p>How does the request reach our Ruby application?</p>
 
 					<pre>
-                 _____________________  _____________________
-_______________  |                   |  |                   |
-|             |  |     webserver     |  |    app server     |
-|  "the web"  |->|  (nginx, apache)  |->|  (puma, unicorn)  |
-|_____________|  |___________________|  |___________________|
+                 _____________________
+_______________  |                   |
+|             |  |     webserver     |
+|  "the web"  |->|  (nginx, apache   |
+|_____________|  |       etc.)       |
+                 |___________________|
+                 __________V__________  ______________________
+                 |                   |  |                    |
+                 |    app server     |  |                    |
+                 |  (puma, unicorn   |->|  your application  |
+                 |      etc.)        |  |                    |
+                 |___________________|  |____________________|
 					</pre>
 				</section>
 
