@@ -179,8 +179,10 @@ _______________  |                   |
 					<pre data-id="code-animation"><code class="ruby" data-trim>
 						{
 						  "REQUEST_METHOD" => "GET",
-						  "QUERY_STRING" => "?page=10",
+						  "PATH_INFO" => "/uses",
 						  "SERVER_PORT" => 80,
+						  "REMOTE_ADDR" => "127.0.0.1",
+						  "HTTP_USER_AGENT" => "Mozilla/5.0 blah blah"
 						  # lots more!
 						}
 					</code></pre>
@@ -333,7 +335,7 @@ _______________  |                   |
 				</section>
 
 				<section>
-					<h2>Summary</h2>
+					<h2>Phew!</h2>
 
 					<p>We just made a very (very) lightweight MVC framework.</p>
 
@@ -341,6 +343,14 @@ _______________  |                   |
 				</section>
 
 				<section>
+					<h2>Why is Rails so big if Rack is so smart?</h2>
+
+					<p>What we've just done is Rack and a little Ruby code. Rails is Rack and a <em>lot</em> of Ruby code.</p>
+				</section>
+
+				<section>
+					<h2>Summary</h2>
+
 					<p>Ruby web frameworks do a heck of a lot, but we really owe a debt of gratitude to just plain ol' rack.</p>
 				</section>
 
