@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!--
+					* title
+					* why profile?
+						* no investor cash
+						* users getting mad
+					* types of profiling
+						* memory
+						* cpu
+						* time
+					* tools of the trade
+						* Benchmark
+						* ruby-prof - https://github.com/ruby-prof/ruby-prof
+					* worked example
+				-->
+
+				<!-- title -->
+				<section>
+					<h1>Profiling Rails Applications</h1>
+					<span>James Nutt</span>
+					<br>
+					<span>🐦 @zerosumjames | 💌 jsrn@hey.com</span>
+				</section>
+				<section>
+					<h2>Why Profile?</h2>
+
+					<ul>
+						<li>no investor cash</li>
+						<li>users getting mad</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>My Old Approach</h2>
+				</section>
+
+				<section>
+					<h2>Types of profiling</h2>
+				</section>
+
+				<section>
+					<h2>Problems</h2>
+
+					<img src="img/memprof-site.png">
+					<img src="img/memprof-support.png">
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
