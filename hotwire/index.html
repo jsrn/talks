@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Hotwire</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img src="img/hotwire.webp" alt="">
+					<h1>hotwire</h1>
+
+					<p>--==[ <b>jsrn.net</b> ]==--</p>
+				</section>
+
+				<section></section>
+
+				<section>
+					<p>In the beginning, there was HTML.</p>
+
+					<pre><code data-trim class="html">
+						<h1>Welcome to my website!</h1>
+
+						<p>I really like football!</p>
+					</code></pre>
+				</section>
+
+				<section style="background: cyan; font-family: 'Comic Sans MS'; color: black;">
+					<p>We want things to look like things.</p>
+
+					<pre><code data-trim class="html">
+						<div style="background: cyan; font-family: 'Comic Sans MS'; color: black;">
+						  <h1>welcome to my website!</h1>
+						  <marquee>james' website which is the best one</marquee>
+
+						  <p>I really like football and good charlotte!</p>
+						</div>
+					</code></pre>
+				</section>
+
+				<section id="boo-lol" style="background-image: url('img/stars-bb.gif'); font-family: 'Comic Sans MS'; color: silver;">
+					<p>Now we want things to <em>do</em> things.</p>
+
+					<small>
+						<h1 style="color: gold;">welcome to my website!</h1>
+						<marquee>james' website which is the best one</marquee>
+
+						<p>sports are for <span style="color: red;" class="blink-tag">POSERS!</span>
+							good charlotte are <span style="color: red;" class="blink-tag">POSERS!</span>
+							i only like BLACK FLAG now</p>
+					</small>
+
+					<pre><code data-trim class="html">
+						<script>
+						  $('body').click(function() {
+						    alert('boo! LOL! xD');
+						  });
+						</script>
+					</code></pre>
+				</section>
+
+				<script>
+					document.getElementById('boo-lol').addEventListener('click', function() {
+						alert('boo! LOL! xD');
+					});
+
+					var blinkTags = document.getElementsByClassName('blink-tag');
+
+					setInterval(function() {
+						for(var i = 0; i < blinkTags.length; i++) {
+							var tag = blinkTags[i];
+							tag.style.visibility = tag.style.visibility == 'initial' ? 'hidden' : 'initial';
+							console.log(tag);
+						}
+					}, 1000);
+				</script>
+
+				<section>
+					<blockquote>"Should I learn React or Vue?"</blockquote>
+				</section>
+
+				<section>
+					<img src="img/js-page-weight-3-yrs.png" alt="">
+				</section>
+
+				<section>
+					<img src="img/old-man-yells.jpg" alt="">
+
+					<blockquote>"Use vanilla JavaScript!"</blockquote>
+				</section>
+
+				<section>
+					<p>You might know Basecamp.</p>
+
+					<img src="img/basecamp-logo.png" alt="">
+				</section>
+
+				<section>
+					<p>Basecamp (originally 37signals) brought us such hits as...</p>
+
+					<ul>
+						<li class="fragment">Basecamp (project management software)</li>
+						<li class="fragment">HEY (boutique email)</li>
+						<li class="fragment">Ruby on Rails</li>
+						<li class="fragment" style="list-style-image: url('img/smaller-man-yells.jpg');">Yelling at clouds</li>
+						<li class="fragment">Hemorrhaging 30% of your staff over the course of a few days</li>
+					</ul>
+				</section>
+
+				<section data-background="img/hotwire-page.png"></section>
+
+				<section>
+					<h2>Turbo + Stimulus + Strada</h2>
+				</section>
+
+				<section>
+					<h2>Turbo</h2>
+
+					<ul>
+						<li>Speed up page changes and form submissions</li>
+						<li>Divide complex pages into components</li>
+						<li>Stream partial page updates over WebSocket</li>
+					</ul>
+
+					<p>... without writing any JavaScript.</p>
+				</section>
+
+				<section>
+					<h3>Drive</h3>
+					<p>The artist formerly known as Turbolinks. Accelerate links and forms by replacing full page loads.</p>
+
+					<h3>Frames</h3>
+					<p>Decompose page into independent contexts.</p>
+				</section>
+
+				<section>
+					<h3>Streams</h3>
+					<p>Deliver page changes over WebSockets or in response to form submissions.</p>
+
+					<h3>Native</h3>
+					<p>Wrap your Rails app in a native shell with seamless transition between web and native sections.</p>
+				</section>
+
+				<section>
+					<pre><code data-trim class="json" data-line-numbers="7|8|10-12">
+{
+  "identifier": {
+    "channel": "Turbo::StreamsChannel",
+    "signed_stream_name": "Ilol0THpFIg=="
+  },
+  "message":"&lt;turbo-stream
+               action='append'
+               target='messages'&gt;
+                 &lt;template&gt;
+                   &lt;p id='message_15'&gt;
+                     26 May 16:05: Hi!
+                   &lt;/p&gt;
+                 &lt;/template&gt;
+               &lt;/turbo-stream&gt;"
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<pre><code data-trim class="html">
+<div id="messages"></div>
+</code></pre>
+
+					<p>&#9759;</p>
+
+<pre><code data-trim class="html">
+<div id="messages">
+  <p id="message_15">
+    26 May 16:05: Hi!
+  </p>
+</div>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Stimulus</h2>
+
+					<p>An HTML-centric approach to state and wiring</p>
+				</section>
+
+				<section>
+<pre><code data-trim class="html">
+<div data-controller="hello">
+  <input data-hello-target="name" type="text">
+
+  <button data-action="click->hello#greet">
+    Greet
+  </button>
+
+  <span data-hello-target="output">
+  </span>
+</div>
+</code></pre>
+
+<pre><code data-trim class="javascript">
+// hello_controller.js
+import { Controller } from "stimulus"
+
+export default class extends Controller {
+	static targets = [ "name", "output" ]
+
+	greet() {
+		this.outputTarget.textContent =
+			`Hello, ${this.nameTarget.value}!`
+	}
+}
+</code></pre>
+</section>
+
+<section>
+<pre><code data-trim class="html" data-line-numbers="4|2,8|1">
+<div data-controller="hello">
+	<input data-hello-target="name" type="text">
+
+	<button data-action="click->hello#greet">
+		Greet
+	</button>
+
+	<span data-hello-target="output">
+	</span>
+</div>
+</code></pre>
+</section>
+
+<section>
+<pre><code data-trim class="javascript" data-line-numbers="5|8,9">
+// hello_controller.js
+import { Controller } from "stimulus"
+
+export default class extends Controller {
+	static targets = [ "name", "output" ]
+
+	greet() {
+		this.outputTarget.textContent =
+			`Hello, ${this.nameTarget.value}!`
+	}
+}
+</code></pre>
+</section>
+
+				<section>
+					<h2>Strada</h2>
+
+					<ul>
+						<li><em>Allegedly</em> standardise how the web and native parts of a mobile app talk to each other</li>
+						<li><em>Allegedly</em> progressively level-up web interactions with native replacements</li>
+					</ul>
+
+					<img src="img/strada-prem.png" alt="" style="position: fixed; top: -300px; right: -350px; transform: rotate(10deg);">
+				</section>
+
+				<section>
+					<h2>The Future</h2>
+				</section>
+
+				<section>
+					<img src="img/ss-retired.png" alt="">
+				</section>
+
+				<section>
+					<p>The concepts are really interesting.</p>
+
+					<p>Hotwire itself may continue to flourish.</p>
+
+					<p>The ideas <em>behind</em> Hotwire may take root elsewhere in a more serious way.</p>
+				</section>
+
+				<section>
+					<p>Should we be putting so many of our eggs in one basket?</p>
+				</section>
+
+				<section>
+					<h2>Thanks</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
